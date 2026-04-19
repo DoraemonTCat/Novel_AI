@@ -20,24 +20,37 @@ class OllamaProvider(BaseAIProvider):
     def _generate(self, system_prompt: str, user_prompt: str,
                   temperature: float = 0.9, num_ctx: int = 8192) -> str:
         """Core generation via Ollama HTTP API (sync for Celery)."""
-        with httpx.Client(timeout=300.0) as client:
-            response = client.post(
-                f"{self.base_url}/api/generate",
-                json={
-                    "model": self.model_name,
-                    "system": system_prompt,
-                    "prompt": user_prompt,
-                    "stream": False,
-                    "options": {
-                        "temperature": temperature,
-                        "num_ctx": num_ctx,
-                        "top_p": 0.95,
-                        "repeat_penalty": 1.1,
+        try:
+            with httpx.Client(timeout=300.0) as client:
+                response = client.post(
+                    f"{self.base_url}/api/generate",
+                    json={
+                        "model": self.model_name,
+                        "system": system_prompt,
+                        "prompt": user_prompt,
+                        "stream": False,
+                        "options": {
+                            "temperature": temperature,
+                            "num_ctx": num_ctx,
+                            "top_p": 0.95,
+                            "repeat_penalty": 1.1,
+                        },
                     },
-                },
+                )
+                response.raise_for_status()
+                return response.json().get("response", "")
+        except httpx.ConnectError:
+            raise ConnectionError(
+                f"❌ ไม่สามารถเชื่อมต่อ Ollama ได้ที่ {self.base_url} — "
+                f"ต้องเปิด Ollama ก่อน! ใช้คำสั่ง: docker compose --profile with-ollama up -d"
             )
-            response.raise_for_status()
-            return response.json().get("response", "")
+        except httpx.HTTPStatusError as e:
+            if e.response.status_code == 404:
+                raise ValueError(
+                    f"❌ Model '{self.model_name}' ไม่พบใน Ollama — "
+                    f"ต้อง pull ก่อน: docker compose exec ollama ollama pull {self.model_name}"
+                )
+            raise
 
     def generate_outline(self, prompt, genre, language, num_chapters,
                          writing_style="contemporary", tone="balanced", pov="third_person") -> dict:
