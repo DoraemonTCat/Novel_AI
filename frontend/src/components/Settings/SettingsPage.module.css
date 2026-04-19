@@ -1,0 +1,96 @@
+.page {
+  max-width: 700px;
+  margin: 0 auto;
+  animation: fadeIn 0.4s ease;
+}
+.title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 32px;
+}
+
+.section {
+  margin-bottom: 32px;
+  padding: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+}
+.sectionTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.formGroup {
+  margin-bottom: 16px;
+}
+.label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+.input {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  outline: none;
+}
+.input:focus {
+  border-color: var(--accent-mid);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+.row:last-child { border-bottom: none; }
+
+.rowLabel {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+.rowValue {
+  font-size: 0.85rem;
+  color: var(--text-accent);
+  font-weight: 600;
+}
+
+.toggle {
+  width: 44px;
+  height: 24px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: background var(--transition-fast);
+}
+.toggleOff { background: var(--bg-glass); border: 1px solid var(--border-color); }
+.toggleOn { background: var(--accent-mid); }
+.toggleDot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: white;
+  position: absolute;
+  top: 3px;
+  transition: left var(--transition-fast);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

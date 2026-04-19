@@ -1,0 +1,269 @@
+.page {
+  animation: fadeIn 0.4s ease;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.cover {
+  width: 160px;
+  height: 240px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--gradient-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  border: 1px solid var(--border-color);
+}
+.cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info {
+  flex: 1;
+}
+.novelTitle {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.novelMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.metaTag {
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.progressSection {
+  margin-bottom: 20px;
+}
+.progressBar {
+  width: 100%;
+  height: 8px;
+  background: var(--bg-glass);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-top: 8px;
+}
+.progressFill {
+  height: 100%;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+  transition: width 0.5s ease;
+}
+.progressText {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 24px;
+  gap: 4px;
+}
+.tab {
+  padding: 12px 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all var(--transition-fast);
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-family: var(--font-primary);
+}
+.tab:hover { color: var(--text-secondary); }
+.tabActive {
+  color: var(--text-accent);
+  border-bottom-color: var(--accent-mid);
+}
+
+/* Chapters List */
+.chaptersList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.chapterItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.chapterItem:hover {
+  border-color: var(--border-color-hover);
+  background: var(--bg-card-hover);
+}
+.chapterNum {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--gradient-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: var(--text-accent);
+}
+.chapterInfo { flex: 1; }
+.chapterTitle {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.chapterMeta {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+.chapterStatus {
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+/* Reader Panel */
+.readerPanel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.readerNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 24px;
+}
+.navBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-family: var(--font-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.navBtn:hover:not(:disabled) {
+  background: var(--bg-card-hover);
+  color: var(--text-accent);
+  border-color: var(--accent-mid);
+}
+.navBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.navTitle {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.readerContent {
+  line-height: 2;
+}
+.readerTitle {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  text-align: center;
+  color: var(--text-accent);
+}
+.readerMeta {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  margin-bottom: 32px;
+}
+.readerText {
+  font-size: 1.05rem;
+  line-height: 2;
+  white-space: pre-wrap;
+  color: var(--text-primary);
+  text-indent: 2em;
+}
+.readerLoading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  color: var(--text-tertiary);
+  gap: 16px;
+}
+.loadingSpinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--border-color);
+  border-top-color: var(--accent-mid);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+.readerEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  color: var(--text-tertiary);
+  gap: 12px;
+  text-align: center;
+}
+.readerEmpty h3 {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+.readerEmpty p {
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+

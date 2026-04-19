@@ -1,0 +1,86 @@
+{
+  "app_name": "Novel AI",
+  "app_tagline": "สร้างนิยายด้วยพลังแห่ง AI",
+  "nav": {
+    "dashboard": "แดชบอร์ด",
+    "create": "สร้างนิยาย",
+    "my_novels": "นิยายของฉัน",
+    "settings": "ตั้งค่า",
+    "logout": "ออกจากระบบ"
+  },
+  "login": {
+    "title": "Novel AI",
+    "subtitle": "แพลตฟอร์มแต่งนิยายด้วย AI อัจฉริยะ",
+    "google_btn": "เข้าสู่ระบบด้วย Google",
+    "description": "รองรับภาษาไทยและอังกฤษ • Gemini 2.5 Flash • Llama 3"
+  },
+  "dashboard": {
+    "title": "แดชบอร์ด",
+    "stats": {
+      "total_novels": "นิยายทั้งหมด",
+      "total_chapters": "ตอนทั้งหมด",
+      "total_words": "คำทั้งหมด",
+      "generating": "กำลังสร้าง"
+    },
+    "create_new": "สร้างนิยายใหม่",
+    "recent": "นิยายล่าสุด",
+    "no_novels": "ยังไม่มีนิยาย เริ่มสร้างนิยายแรกของคุณ!"
+  },
+  "create": {
+    "title": "สร้างนิยายใหม่",
+    "steps": {
+      "prompt": "เรื่องราว",
+      "genre": "แนว & สไตล์",
+      "chapters": "ตอน & ความยาว",
+      "ai": "AI Provider",
+      "characters": "ตัวละคร",
+      "review": "ตรวจสอบ"
+    },
+    "prompt_label": "อธิบายนิยายที่คุณต้องการ",
+    "prompt_placeholder": "เขียนเรื่องราวที่คุณอยากให้ AI สร้าง...\n\nเช่น: นิยายแฟนตาซีเกี่ยวกับเด็กสาวที่ค้นพบว่าตัวเองมีพลังเวทมนตร์ ในโลกที่เวทมนตร์ถูกสั่งห้าม...",
+    "novel_title": "ชื่อเรื่อง",
+    "language": "ภาษานิยาย",
+    "chapter_count": "จำนวนตอน",
+    "chapter_length": "ความยาวต่อตอน",
+    "length_short": "สั้น (~1,500 คำ)",
+    "length_medium": "ปานกลาง (~3,000 คำ)",
+    "length_long": "ยาว (~5,000 คำ)",
+    "length_custom": "กำหนดเอง",
+    "ai_provider": "เลือก AI",
+    "start_generating": "เริ่มสร้างนิยาย",
+    "back": "ย้อนกลับ",
+    "next": "ถัดไป"
+  },
+  "genres": {
+    "romance": "โรแมนติก",
+    "fantasy": "แฟนตาซี",
+    "mystery": "สืบสวน",
+    "scifi": "Sci-Fi",
+    "horror": "สยองขวัญ",
+    "slice_of_life": "Slice of Life",
+    "action": "แอคชั่น",
+    "drama": "ดราม่า",
+    "comedy": "ตลก",
+    "bl_gl": "BL/GL",
+    "isekai": "อิเซไก",
+    "other": "อื่นๆ"
+  },
+  "status": {
+    "draft": "แบบร่าง",
+    "generating": "กำลังสร้าง",
+    "completed": "เสร็จสิ้น",
+    "paused": "หยุดชั่วคราว",
+    "error": "ผิดพลาด"
+  },
+  "common": {
+    "save": "บันทึก",
+    "cancel": "ยกเลิก",
+    "delete": "ลบ",
+    "edit": "แก้ไข",
+    "loading": "กำลังโหลด...",
+    "error": "เกิดข้อผิดพลาด",
+    "confirm": "ยืนยัน",
+    "words": "คำ",
+    "chapters": "ตอน"
+  }
+}

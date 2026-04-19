@@ -1,0 +1,43 @@
+# Web Framework
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+
+# Database
+sqlalchemy[asyncio]==2.0.36
+alembic==1.14.1
+asyncpg==0.30.0
+psycopg2-binary==2.9.10
+
+# Task Queue
+celery[redis]==5.4.0
+redis==5.2.1
+
+# AI - Gemini
+google-genai==1.5.0
+
+# AI - Ollama (HTTP client)
+httpx==0.28.1
+
+# AI - RAG
+llama-index-core==0.12.10
+llama-index-vector-stores-chroma==0.4.1
+chromadb==0.6.3
+
+# Auth & Security
+authlib==1.4.0
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+slowapi==0.1.9
+
+# Export
+weasyprint==63.1
+ebooklib==0.18
+markdown==3.7.0
+
+# Utils
+python-dotenv==1.1.0
+pydantic==2.11.1
+pydantic-settings==2.8.1
+python-multipart==0.0.19
+websockets==14.2
+Pillow==11.1.0

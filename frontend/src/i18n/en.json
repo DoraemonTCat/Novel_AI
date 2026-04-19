@@ -1,0 +1,86 @@
+{
+  "app_name": "Novel AI",
+  "app_tagline": "Create Novels with AI Power",
+  "nav": {
+    "dashboard": "Dashboard",
+    "create": "Create Novel",
+    "my_novels": "My Novels",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "login": {
+    "title": "Novel AI",
+    "subtitle": "AI-Powered Novel Writing Platform",
+    "google_btn": "Sign in with Google",
+    "description": "Thai & English • Gemini 2.5 Flash • Llama 3"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "stats": {
+      "total_novels": "Total Novels",
+      "total_chapters": "Total Chapters",
+      "total_words": "Total Words",
+      "generating": "Generating"
+    },
+    "create_new": "Create New Novel",
+    "recent": "Recent Novels",
+    "no_novels": "No novels yet. Start creating your first novel!"
+  },
+  "create": {
+    "title": "Create New Novel",
+    "steps": {
+      "prompt": "Story",
+      "genre": "Genre & Style",
+      "chapters": "Chapters",
+      "ai": "AI Provider",
+      "characters": "Characters",
+      "review": "Review"
+    },
+    "prompt_label": "Describe the novel you want",
+    "prompt_placeholder": "Write the story you want AI to create...\n\nExample: A fantasy novel about a girl who discovers she has magical powers in a world where magic is forbidden...",
+    "novel_title": "Novel Title",
+    "language": "Novel Language",
+    "chapter_count": "Number of Chapters",
+    "chapter_length": "Chapter Length",
+    "length_short": "Short (~1,500 words)",
+    "length_medium": "Medium (~3,000 words)",
+    "length_long": "Long (~5,000 words)",
+    "length_custom": "Custom",
+    "ai_provider": "Select AI",
+    "start_generating": "Start Generating",
+    "back": "Back",
+    "next": "Next"
+  },
+  "genres": {
+    "romance": "Romance",
+    "fantasy": "Fantasy",
+    "mystery": "Mystery",
+    "scifi": "Sci-Fi",
+    "horror": "Horror",
+    "slice_of_life": "Slice of Life",
+    "action": "Action",
+    "drama": "Drama",
+    "comedy": "Comedy",
+    "bl_gl": "BL/GL",
+    "isekai": "Isekai",
+    "other": "Other"
+  },
+  "status": {
+    "draft": "Draft",
+    "generating": "Generating",
+    "completed": "Completed",
+    "paused": "Paused",
+    "error": "Error"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "confirm": "Confirm",
+    "words": "words",
+    "chapters": "chapters"
+  }
+}

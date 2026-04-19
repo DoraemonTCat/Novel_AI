@@ -1,0 +1,162 @@
+services:
+  # === Frontend (React + Vite → Nginx) ===
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - novel-net
+
+  # === Backend API (FastAPI + Uvicorn) ===
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      chromadb:
+        condition: service_started
+    env_file: .env
+    volumes:
+      - novel_exports:/app/exports
+      - novel_covers:/app/covers
+    restart: unless-stopped
+    networks:
+      - novel-net
+
+  # === Celery Worker (Async Tasks) ===
+  celery-worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    command: celery -A app.tasks.celery_app worker -l info -c 2 -Q default,generation,export
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      chromadb:
+        condition: service_started
+    env_file: .env
+    volumes:
+      - novel_exports:/app/exports
+      - novel_covers:/app/covers
+    restart: unless-stopped
+    networks:
+      - novel-net
+
+  # === PostgreSQL 16 ===
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-novel_ai}
+      POSTGRES_USER: ${POSTGRES_USER:-novel_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-novel_pass_change_me}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U novel_user -d novel_ai"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - novel-net
+
+  # === Redis 7 (Broker + Cache + Rate Limit) ===
+  redis:
+    image: redis:7-alpine
+    command: redis-server --maxmemory 256mb --maxmemory-policy allkeys-lru
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - novel-net
+
+  # === ChromaDB (Vector Store for RAG) ===
+  chromadb:
+    image: chromadb/chroma:latest
+    ports:
+      - "8001:8000"
+    volumes:
+      - chroma_data:/chroma/chroma
+    environment:
+      - ANONYMIZED_TELEMETRY=false
+    restart: unless-stopped
+    networks:
+      - novel-net
+
+  # === Ollama (Local LLM - Optional) ===
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    profiles:
+      - with-ollama
+    restart: unless-stopped
+    networks:
+      - novel-net
+
+  # === Stable Diffusion WebUI (Cover Generation - Optional) ===
+  stable-diffusion:
+    image: universonic/stable-diffusion-webui:latest
+    ports:
+      - "7860:7860"
+    volumes:
+      - sd_models:/stable-diffusion-webui/models
+      - sd_outputs:/stable-diffusion-webui/outputs
+    command: --api --listen --skip-torch-cuda-test
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    profiles:
+      - with-sd
+    restart: unless-stopped
+    networks:
+      - novel-net
+
+volumes:
+  postgres_data:
+  redis_data:
+  chroma_data:
+  ollama_data:
+  novel_exports:
+  novel_covers:
+  sd_models:
+  sd_outputs:
+
+networks:
+  novel-net:
+    driver: bridge

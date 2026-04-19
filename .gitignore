@@ -1,0 +1,11 @@
+# Novel AI
+*.pyc
+__pycache__
+node_modules
+dist
+.env
+*.log
+postgres_data
+redis_data
+chroma_data
+ollama_data
